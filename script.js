@@ -22,19 +22,39 @@ const imageUrls = [
   // Add more image URLs as needed
 ];
 
-// Function to get a random image URL from the array
 function getRandomImageUrl() {
   const randomIndex = Math.floor(Math.random() * imageUrls.length);
   return imageUrls[randomIndex];
 }
 
-// Function to change the image of a flex item
-function changeImage(flexItem) {
-  const imageUrl = getRandomImageUrl();
-  flexItem.style.backgroundImage = `url('${imageUrl}')`;
+function adjustImageSize(flexItem, imageWidth, imageHeight) {
+  const containerWidth = flexItem.parentElement.clientWidth; // Width of the flex container
+  const aspectRatio = imageWidth / imageHeight;
+  const itemHeight = 200; // Fixed height for the flex items
+
+  // Calculate the width of the flex item based on the aspect ratio and fixed height
+  let itemWidth = itemHeight * aspectRatio;
+
+  // Check if the calculated width exceeds the container width
+  if (itemWidth > containerWidth) {
+    // If the width exceeds, adjust the width to fit the container
+    itemWidth = containerWidth;
+  }
+
+  // Set the calculated width for the flex item
+  flexItem.style.width = `${itemWidth}px`;
 }
 
-// Function to create and append flex items to the container
+function changeImage(flexItem) {
+  const imageUrl = getRandomImageUrl();
+  const image = new Image();
+  image.onload = function () {
+    adjustImageSize(flexItem, image.width, image.height);
+    flexItem.style.backgroundImage = `url('${imageUrl}')`;
+  };
+  image.src = imageUrl;
+}
+
 function createFlexItems(container, count) {
   for (let i = 0; i < count; i++) {
     const flexItem = document.createElement('div');
@@ -49,6 +69,5 @@ function createFlexItems(container, count) {
   }
 }
 
-// Get the container and create the flex items
 const imageContainer = document.getElementById('imageContainer');
 createFlexItems(imageContainer, 12); // Change 12 to the number of flex items you want
