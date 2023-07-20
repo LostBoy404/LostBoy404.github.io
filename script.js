@@ -36,10 +36,6 @@ function adjustImageSize(flexItem, imageWidth, imageHeight) {
   let itemWidth = itemHeight * aspectRatio;
 
   // Check if the calculated width exceeds the container width
-  if (itemWidth > containerWidth) {
-    // If the width exceeds, adjust the width to fit the container
-    itemWidth = containerWidth;
-  }
 
   // Set the calculated width for the flex item
   flexItem.style.width = `${itemWidth}px`;
