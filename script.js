@@ -70,4 +70,4 @@ function createFlexItems(container, count) {
 }
 
 const imageContainer = document.getElementById('imageContainer');
-createFlexItems(imageContainer, 12); // Change 12 to the number of flex items you want
+createFlexItems(imageContainer, 12);
