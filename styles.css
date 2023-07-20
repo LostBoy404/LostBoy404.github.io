@@ -10,16 +10,17 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 800px; /* Set the maximum width for the container */
-  margin: 0 auto; /* Center the container */
+  max-width: 800px; /* Set a maximum width for responsiveness */
 }
 
 .flex-item {
-  flex: 0 0 auto; /* Prevent flex items from growing and shrinking */
-  width: 200px; /* Set a default width for the flex items */
-  height: 200px; /* Set a fixed height for all images */
+  flex: 0 0 calc(33.33% - 20px); /* Adjust the percentage as needed */
+  height: 0;
+  padding-bottom: 100%; /* Maintain a 1:1 aspect ratio */
   margin: 5px;
   border: 1px solid #ccc;
-  background-size: cover; /* Make the background image cover the container */
-  background-position: center; /* Center the background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
