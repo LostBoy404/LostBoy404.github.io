@@ -27,7 +27,7 @@ function changeImage(flexItem) {
 // Function to create and append flex items to the container
 function createFlexItems(container, count) {
   for (let i = 0; i < count; i++) {
-    const flexItem = document.createElement('div');
+    const flexItem = document.createElement('li');
     flexItem.classList.add('flex-item');
     container.appendChild(flexItem);
     changeImage(flexItem); // Set a random image initially
